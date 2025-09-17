@@ -1,10 +1,27 @@
-import { useState, useEffect } from 'react'
-import { Button, Box, Stack, Typography, Accordion, AccordionDetails, AccordionSummary, Menu, MenuItem, ListItemIcon, Avatar, Divider, Card, CardContent } from '@mui/material';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { CssBaseline } from '@mui/material';
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import Inicio from './Pages/inicio.jsx';
+import Login from './Pages/login.jsx';
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark'
+  }
+});
 
 function App() {
-  return(
-    <Typography variant='h1'>Hola IA LINDA</Typography>
+  return (
+    <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
+      <Router>
+        <Routes>
+          <Route path='/' element={<Inicio/>}></Route>
+          <Route path='Login' element={<Login/>}></Route>
+        </Routes>
+      </Router>
+    </ThemeProvider>
   )
 }
 
-export default App
+export default App;
